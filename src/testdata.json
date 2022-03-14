@@ -1,0 +1,76 @@
+[
+  {
+    "name": "Tiger",
+    "cal_in": 2000,
+    "cal_out": 1000,
+    "level": 1,
+    "eats": [
+      "Snake",
+      "Fox"
+    ]
+  },
+  {
+    "name": "Snake",
+    "cal_in": 2000,
+    "cal_out": 1500,
+    "level": 2,
+    "eats": [
+      "Mouse",
+      "Squirrel"
+    ]
+  },
+  {
+    "name": "Fox",
+    "cal_in": 2000,
+    "cal_out": 1200,
+    "level": 2,
+    "eats": [
+      "Mouse",
+      "Squirrel"
+    ]
+  },
+  {
+    "name": "Mouse",
+    "cal_in": 4000,
+    "cal_out": 3000,
+    "level": 3,
+    "eats": [
+      "Grass",
+      "Mushroom"
+    ]
+  },
+  {
+    "name": "Squirrel",
+    "cal_in": 3500,
+    "cal_out": 2500,
+    "level": 3,
+    "eats": [
+      "Grass",
+      "Nuts"
+    ]
+  },
+  {
+    "name": "Grass",
+    "cal_in": 0,
+    "cal_out": 5000,
+    "level": 4,
+    "eats": [
+    ]
+  },
+  {
+    "name": "Mushroom",
+    "cal_in": 0,
+    "cal_out": 5000,
+    "level": 4,
+    "eats": [
+    ]
+  },
+  {
+    "name": "Nuts",
+    "cal_in": 0,
+    "cal_out": 4000,
+    "level": 4,
+    "eats": [
+    ]
+  }
+]

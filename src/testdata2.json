@@ -1,0 +1,76 @@
+[
+  {
+    "name": "Atlantic Spadefish",
+    "cal_in": 2500,
+    "cal_out": 1000,
+    "level": 1,
+    "eats": [
+      "Red Grouper",
+      "Rock Sea Bass"
+    ]
+  },
+  {
+    "name": "Red Grouper",
+    "cal_in": 4200,
+    "cal_out": 2000,
+    "level": 2,
+    "eats": [
+      "Sailfish",
+      "Scamp"
+    ]
+  },
+  {
+    "name": "Rock Sea Bass",
+    "cal_in": 3000,
+    "cal_out": 1500,
+    "level": 2,
+    "eats": [
+      "Sailfish",
+      "Scamp"
+    ]
+  },
+  {
+    "name": "Scamp",
+    "cal_in": 4500,
+    "cal_out": 5000,
+    "level": 3,
+    "eats": [
+      "Butterfish",
+      "Bluefish"
+    ]
+  },
+  {
+    "name": "Sailfish",
+    "cal_in": 4200,
+    "cal_out": 5000,
+    "level": 3,
+    "eats": [
+      "Butterfish",
+      "Dolphinfish"
+    ]
+  },
+  {
+    "name": "Butterfish",
+    "cal_in": 4000,
+    "cal_out": 5000,
+    "level": 4,
+    "eats": [
+    ]
+  },
+  {
+    "name": "Dolphinfish",
+    "cal_in": 4500,
+    "cal_out": 3000,
+    "level": 4,
+    "eats": [
+    ]
+  },
+  {
+    "name": "Bluefish",
+    "cal_in": 4000,
+    "cal_out": 5000,
+    "level": 4,
+    "eats": [
+    ]
+  }
+]

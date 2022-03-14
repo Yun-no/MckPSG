@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title>PSG helper</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<!-- Scripts -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="assets/js/bootstable.js"></script>
+<script src="assets/js/main.js"></script>
+<header></header>
+
+<main>
+
+<div class="table-content">
+        <table class="table table-borded table-responsive table-striped " id="makeEditable">
+            <thead class="table-dark">
+                <tr>
+                    <th>name</th>
+                    <th>level</th>
+                    <th>cal_in</th>
+                    <th>cal_out</th>
+                    <th>eats_info</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tiger</td>
+                    <td>1</td>
+                    <td>2000</td>
+                    <td>1000</td>
+                    <td>Snake,Fox</td>
+                </tr>
+                <tr>
+                    <td>Snake</td>
+                    <td>2</td>
+                    <td>2000</td>
+                    <td>1500</td>
+                    <td>Mouse,Squirrel</td>
+                </tr>
+                <tr>
+                    <td>Fox</td>
+                    <td>2</td>
+                    <td>2000</td>
+                    <td>1200</td>
+                    <td>Mouse,Squirrel</td>
+                </tr>
+                <tr>
+                    <td>Mouse</td>
+                    <td>3</td>
+                    <td>4000</td>
+                    <td>3000</td>
+                    <td>Grass,Mushroom</td>
+                </tr>
+                <tr>
+                    <td>Squirrel</td>
+                    <td>3</td>
+                    <td>3500</td>
+                    <td>2500</td>
+                    <td>Grass,Nuts</td>
+                </tr>
+                <tr>
+                    <td>Grass</td>
+                    <td>4</td>
+                    <td>0</td>
+                    <td>5000</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Mushroom</td>
+                    <td>4</td>
+                    <td>0</td>
+                    <td>5000</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Nuts</td>
+                    <td>4</td>
+                    <td>0</td>
+                    <td>4000</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="but_add">Add New Species</button>
+        <br>
+        <br>
+        <br>
+        <div>
+            <button id="but_val">Validate</button>
+        </div>
+        <br>
+        <div>
+            <button id="but_cal">Calculate</button>
+        </div>
+        <br>
+        <div id="myinfo">
+        </div>
+    </div>
+
+
+</main>
+
+<script>
+    $('#makeEditable').SetEditable({
+	  $addButton: $('#but_add')
+	});
+
+
+	$('#but_val').click(function() {
+	    $jsonstr = TableToJSON();
+	    $("#myinfo").html("");
+        $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:8000/validate",
+            data: $jsonstr,
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(msg){
+                  console.log("success");
+                  console.log(msg);
+                  $("#myinfo").html("Passed " + msg.passed +"<br>");
+                  var arrayLength = msg.issues.length;
+                  for (var i = 0; i < arrayLength; i++) {
+                        console.log(msg.issues[i]);
+                        $text = msg.issues[i];
+                        $("#myinfo").append("<h4>"+$text +"</h4>");
+                   }
+            }
+        });
+	});
+
+	$('#but_cal').click(function() {
+	    $jsonstr = TableToJSON();
+	    $("#myinfo").html("");
+        $.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:8000/check",
+            data: $jsonstr,
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(msg){
+                  console.log("success");
+                  var arrayLength = msg.length;
+                  for (var i = 0; i < arrayLength; i++) {
+                        console.log(msg[i]);
+                        $text = msg[i];
+                        $text = $text.replace("feed", '<span style="color:green;font-weight: bold;">feed</span>');
+                        $text = $text.replace("extinct", '<span style="color:red;font-weight: bold;">extinct</span>');
+                        $("#myinfo").append("<h4>"+$text +"</h4>");
+                   }
+
+            }
+        });
+	});
+</script>
+
+<footer></footer>
+
+
+</html>
